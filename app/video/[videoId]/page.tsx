@@ -3,11 +3,14 @@ import Player from '@/components/video/Player'
 import PlayerControl from '@/components/video/PlayerControl'
 import React from 'react'
 
-function VideoPage() {
+async function VideoPage({ params }: {params: Promise<{ videoId: string }>}) {
+
+  const {videoId} = await params;
+
   return (
     <div className='flex gap-4 px-20 py-10'>
       <div className="flex flex-col flex-1">
-        <Player />
+        <Player videoId={videoId}/>
         <PlayerControl/>
         <CurrentSentence />
       </div>

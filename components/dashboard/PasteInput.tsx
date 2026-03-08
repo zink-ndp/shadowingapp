@@ -1,6 +1,6 @@
 "use client";
 
-import { extractVideoId } from "@/utils/youtubeParse";
+import { extractYoutubeId } from "@/utils/youtubeParse";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -14,9 +14,11 @@ function PasteInput() {
 
   const handleSubmit = () => {
     if (!url) return;
-    const videoId = extractVideoId(url);
+    const videoId = extractYoutubeId(url);
     if (videoId) {
       router.push(`/video/${videoId}`);
+    } else {
+      alert("Please enter a valid YouTube URL.");
     }
   };
 
